@@ -35,21 +35,23 @@ def main_route(content_type=''):
 
 @DISPATCHER.register(MODES.PLAY, args=['video_type', 'title', 'year'], kwargs=['trakt_id', 'show_id', 'season', 'episode', 'ep_title'])
 def play_route(video_type, title, year, trakt_id=None, show_id=None, season=None, episode=None, ep_title=None):
+    file_path = None
     title = unquote(title)
     if ep_title is not None:
         ep_title = unquote(ep_title)
-    file_path = None
 
     if video_type == 'episode':
         if season and episode:
             tvshow_id = requests.get_tvshow_id(title, year)
             if tvshow_id is not None:
                 file_path = requests.find_episode(tvshow_id, season, episode)
+
             if not file_path:
                 str_season = '0' + str(season) if len(season) == 1 else str(season)
                 str_episode = '0' + str(episode) if len(episode) == 1 else str(episode)
                 label = '%s - S%sE%s' % (title, str_season, str_episode)
                 kodi.notify(msg=i18n('not_found_') % label)
+
     elif video_type == 'movie':
         file_path = requests.find_movie(title, year)
         if not file_path:
@@ -70,8 +72,10 @@ def open_route(video_type, title, year, trakt_id=None, show_id=None, season=None
 
     if video_type == 'episode':
         play_route(video_type, title, year, trakt_id, show_id, season, episode, ep_title)
+
     elif video_type == 'movie':
         play_route(video_type, title, year, trakt_id, show_id, season, episode, ep_title)
+
     elif video_type == 'season':
         if season:
             tvshow_id = requests.get_tvshow_id(title, year)
@@ -80,6 +84,7 @@ def open_route(video_type, title, year, trakt_id=None, show_id=None, season=None
                 season_exists = requests.season_exists(tvshow_id, season)
                 if season_exists:
                     kodi.execute_builtin('ActivateWindow(Videos,videodb://tvshows/titles/%s/%s/?tvshowid=%s)' % (str(tvshow_id), str(season), str(tvshow_id)))
+
             if not season_exists:
                 str_season = '0' + str(season) if len(season) == 1 else str(season)
                 label = '%s - S%s' % (title, str_season)
