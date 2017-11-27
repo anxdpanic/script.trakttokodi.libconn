@@ -19,12 +19,12 @@ TraktToKodi Library Connector connects [TraktToKodi](https://github.com/anxdpani
 
     _**Google Chrome Extension**_
 
-    <!--    - Download extension from [Chrome Web Store](https://chrome.google.com/webstore/detail/playthis/adddkaonokkecefokdanjpaamfajogel) -->
+    - Download extension from [Chrome Web Store](https://chrome.google.com/webstore/detail/trakttokodi/jongfgkokmlpdekeljpegeldjofbageo)
     - GitHub: [TraktToKodi \(Google Chrome\)](https://github.com/anxdpanic/TraktToKodi-Extension/tree/chrome#trakttokodi-google-chrome)
 
     _**Firefox 53+ Extension**_
 
-    <!--    - Download extension from [AMO Gallery](https://addons.mozilla.org/en-US/firefox/addon/playthis/) -->
+    - Download extension from [AMO Gallery](https://addons.mozilla.org/en-US/firefox/addon/trakttokodi/)
     - GitHub: [TraktToKodi \(Firefox\)](https://github.com/anxdpanic/TraktToKodi-Extension/tree/firefox#trakttokodi-firefox)
 
 - Support
