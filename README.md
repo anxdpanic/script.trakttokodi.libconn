@@ -17,12 +17,12 @@ TraktToKodi Library Connector connects [TraktToKodi](https://github.com/anxdpani
     1. Install script.trakttokodi.libconn and [TraktToKodi](https://github.com/anxdpanic/TraktToKodi-Extension/)
     2. Set the Add-on ID in [TraktToKodi](https://github.com/anxdpanic/TraktToKodi-Extension/) to script.trakttokodi.libconn
 
-    _**Google Chrome Context Menu**_
+    _**Google Chrome Extension**_
 
     <!--    - Download extension from [Chrome Web Store](https://chrome.google.com/webstore/detail/playthis/adddkaonokkecefokdanjpaamfajogel) -->
     - GitHub: [TraktToKodi \(Google Chrome\)](https://github.com/anxdpanic/TraktToKodi-Extension/tree/chrome#trakttokodi-google-chrome)
 
-    _**Firefox 53+ Context Menu**_
+    _**Firefox 53+ Extension**_
 
     <!--    - Download extension from [AMO Gallery](https://addons.mozilla.org/en-US/firefox/addon/playthis/) -->
     - GitHub: [TraktToKodi \(Firefox\)](https://github.com/anxdpanic/TraktToKodi-Extension/tree/firefox#trakttokodi-firefox)
