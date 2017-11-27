@@ -19,9 +19,9 @@
         </assets>
         <summary lang="en_gb">Library connector for TraktToKodi browser extension</summary>
         <description lang="en_gb">
-Play or open content in your Kodi library from trakt.tv in Chrome/Firefox.
+Open or play content in your Kodi library from trakt.tv in Chrome/Firefox.
 
-Required browser extension available on the Chrome Web Store and Mozilla's AMO Gallery
+Required TraktToKodi browser extension available on the Chrome Web Store and Mozilla's AMO Gallery
 
 Artwork by @konsumer420
         </description>
@@ -29,7 +29,7 @@ Artwork by @konsumer420
         <platform>all</platform>
         <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
         <forum></forum>
-        <website>https://github.com/anxdpanic/script.trakttokodi#trakttokodi</website>
-        <source>https://github.com/anxdpanic/script.trakttokodi</source>
+        <website>https://github.com/anxdpanic/script.trakttokodi.libconn#trakttokodi-library-connector</website>
+        <source>https://github.com/anxdpanic/script.trakttokodi.libconn</source>
 	</extension>
 </addon>
