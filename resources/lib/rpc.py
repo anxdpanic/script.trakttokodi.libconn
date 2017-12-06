@@ -24,7 +24,7 @@ import json
 
 class Library:
     @staticmethod
-    def find_movie(title, year):
+    def find_movie(title, year, imdb):
         request = {
             'jsonrpc': '2.0',
             'params': {
@@ -44,11 +44,12 @@ class Library:
                     ]
                 },
                 'properties': [
-                    'file'
+                    'file',
+                    'imdbnumber'
                 ],
                 'limits': {
                     'start': 0,
-                    'end': 1
+                    'end': 25
                 }
             },
             'method': 'VideoLibrary.GetMovies',
@@ -58,13 +59,17 @@ class Library:
         log_utils.log('GetMovies Response |%s|' % json.dumps(response, indent=4))
 
         result = response.get('result', {})
-        episode = result.get('movies', [{'file': None}])[0]
-        file_path = episode.get('file', None)
+        movies = result.get('movies', [{'file': None, 'imdbnumber': None}])
+        file_path = None
+        for movie in movies:
+            if imdb == movie.get('imdbnumber', None):
+                file_path = movie.get('file', None)
+                break
 
         return file_path
 
     @staticmethod
-    def get_tvshow_id(title, year):
+    def get_tvshow_id(title, year, imdb):
         request = {
             'jsonrpc': '2.0',
             'params': {
@@ -84,11 +89,11 @@ class Library:
                     ]
                 },
                 'properties': [
-                    'file'
+                    'imdbnumber'
                 ],
                 'limits': {
                     'start': 0,
-                    'end': 1
+                    'end': 25
                 }
             },
             'method': 'VideoLibrary.GetTVShows',
@@ -98,8 +103,12 @@ class Library:
         log_utils.log('GetTVShows Response |%s|' % json.dumps(response, indent=4))
 
         result = response.get('result', {})
-        episode = result.get('tvshows', [{'tvshowid': None}])[0]
-        tvshow_id = episode.get('tvshowid', None)
+        tvshows = result.get('tvshows', [{'tvshowid': None, 'imdbnumber': None}])
+        tvshow_id = None
+        for show in tvshows:
+            if imdb == show.get('imdbnumber', None):
+                tvshow_id = show.get('tvshowid', None)
+                break
 
         return tvshow_id
 

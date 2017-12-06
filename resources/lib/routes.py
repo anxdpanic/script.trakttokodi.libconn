@@ -33,8 +33,8 @@ def main_route(content_type=''):
     kodi.show_settings()
 
 
-@DISPATCHER.register(MODES.PLAY, args=['video_type', 'title', 'year'], kwargs=['trakt_id', 'show_id', 'season', 'episode', 'ep_title'])
-def play_route(video_type, title, year, trakt_id=None, show_id=None, season=None, episode=None, ep_title=None):
+@DISPATCHER.register(MODES.PLAY, args=['video_type', 'title', 'year'], kwargs=['trakt_id', 'episode_id', 'season_id', 'season', 'episode', 'ep_title', 'imdb_id', 'tmdb_id', 'tvdb_id'])
+def play_route(video_type, title, year, trakt_id=None, episode_id=None, season_id=None, imdb_id=None, tmdb_id=None, tvdb_id=None, season=None, episode=None, ep_title=None):
     file_path = None
     title = unquote(title)
     if ep_title is not None:
@@ -42,7 +42,7 @@ def play_route(video_type, title, year, trakt_id=None, show_id=None, season=None
 
     if video_type == 'episode':
         if season and episode:
-            tvshow_id = requests.get_tvshow_id(title, year)
+            tvshow_id = requests.get_tvshow_id(title, year, tvdb_id)
             if tvshow_id is not None:
                 file_path = requests.find_episode(tvshow_id, season, episode)
 
@@ -53,7 +53,7 @@ def play_route(video_type, title, year, trakt_id=None, show_id=None, season=None
                 kodi.notify(msg=i18n('not_found_') % label)
 
     elif video_type == 'movie':
-        file_path = requests.find_movie(title, year)
+        file_path = requests.find_movie(title, year, imdb_id)
         if not file_path:
             label = '%s (%s)' % (title, str(year))
             kodi.notify(msg=i18n('not_found_') % label)
@@ -63,22 +63,22 @@ def play_route(video_type, title, year, trakt_id=None, show_id=None, season=None
         kodi.Player().play(file_path, play_item)
 
 
-@DISPATCHER.register(MODES.OPEN, args=['video_type', 'title', 'year'], kwargs=['trakt_id', 'show_id', 'season', 'episode', 'ep_title'])
-def open_route(video_type, title, year, trakt_id=None, show_id=None, season=None, episode=None, ep_title=None):
+@DISPATCHER.register(MODES.OPEN, args=['video_type', 'title', 'year'], kwargs=['trakt_id', 'episode_id', 'season_id', 'season', 'episode', 'ep_title', 'imdb_id', 'tmdb_id', 'tvdb_id'])
+def open_route(video_type, title, year, trakt_id=None, episode_id=None, season_id=None, imdb_id=None, tmdb_id=None, tvdb_id=None, season=None, episode=None, ep_title=None):
     if (video_type != 'episode') and (video_type != 'movie'):
         title = unquote(title)
         if ep_title is not None:
             ep_title = unquote(ep_title)
 
     if video_type == 'episode':
-        play_route(video_type, title, year, trakt_id, show_id, season, episode, ep_title)
+        play_route(video_type, title, year, trakt_id, episode_id, season_id, imdb_id, tmdb_id, tvdb_id, season, episode, ep_title)
 
     elif video_type == 'movie':
-        play_route(video_type, title, year, trakt_id, show_id, season, episode, ep_title)
+        play_route(video_type, title, year, trakt_id, episode_id, season_id, imdb_id, tmdb_id, tvdb_id, season, episode, ep_title)
 
     elif video_type == 'season':
         if season:
-            tvshow_id = requests.get_tvshow_id(title, year)
+            tvshow_id = requests.get_tvshow_id(title, year, tvdb_id)
             season_exists = False
             if tvshow_id is not None:
                 season_exists = requests.season_exists(tvshow_id, season)
@@ -91,7 +91,7 @@ def open_route(video_type, title, year, trakt_id=None, show_id=None, season=None
                 kodi.notify(msg=i18n('not_found_') % label)
 
     elif video_type == 'show':
-        tvshow_id = requests.get_tvshow_id(title, year)
+        tvshow_id = requests.get_tvshow_id(title, year, tvdb_id)
         if tvshow_id is not None:
             kodi.execute_builtin('ActivateWindow(Videos,videodb://tvshows/titles/%s/)' % str(tvshow_id))
         else:
