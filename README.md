@@ -1,4 +1,4 @@
-![TraktToKodi Library Connector](https://raw.githubusercontent.com/anxdpanic/script.trakttokodi.libconn/master/icon.png)
+![TraktToKodi Library Connector](icon.png)
 # TraktToKodi Library Connector
 
 TraktToKodi Library Connector connects [TraktToKodi](https://github.com/anxdpanic/TraktToKodi-Extension/) to your Kodi library, and will open/play your library content from trakt.tv in your browser.
