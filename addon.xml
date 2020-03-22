@@ -18,8 +18,8 @@
             <fanart></fanart>
             <screenshot></screenshot>
         </assets>
-        <summary lang="en_gb">Library connector for TraktToKodi browser extension</summary>
-        <description lang="en_gb">
+        <summary lang="en_GB">Library connector for TraktToKodi browser extension</summary>
+        <description lang="en_GB">
 TraktToKodi Library Connector connects TraktToKodi (browser extension) to your Kodi library, and will open/play your library content from trakt.tv in your browser.
 
 Required TraktToKodi browser extension available on the Chrome Web Store and Mozilla's AMO Gallery
