@@ -15,8 +15,6 @@
         </news>
         <assets>
             <icon>icon.png</icon>
-            <fanart></fanart>
-            <screenshot></screenshot>
         </assets>
         <summary lang="en_GB">Library connector for TraktToKodi browser extension</summary>
         <description lang="en_GB">
@@ -26,10 +24,8 @@ Required TraktToKodi browser extension available on the Chrome Web Store and Moz
 
 Artwork by @konsumer420
         </description>
-        <language></language>
         <platform>all</platform>
         <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
-        <forum></forum>
         <website>https://github.com/anxdpanic/script.trakttokodi.libconn#trakttokodi-library-connector</website>
         <source>https://github.com/anxdpanic/script.trakttokodi.libconn</source>
     </extension>
